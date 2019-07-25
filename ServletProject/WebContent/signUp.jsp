@@ -35,12 +35,14 @@
 				alert("Name must be filled out");
 				return false;
 			}
-			if (email == "") {
-				alert("email must be filled out");
-				return false;
-			}
 			if (password == "") {
 				alert("password must be filled out");
+				return false;
+			}
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(!email.match(mailformat))
+			{
+				alert("You have entered an invalid email address!");
 				return false;
 			}
 			return true;

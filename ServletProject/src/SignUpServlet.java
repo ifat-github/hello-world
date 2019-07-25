@@ -13,17 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SignUpServlet() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-        
 		String name = request.getParameter("name");
         String email = request.getParameter("email");
         String pass = request.getParameter("password");
