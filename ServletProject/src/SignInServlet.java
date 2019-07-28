@@ -27,11 +27,19 @@ public class SignInServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 
-		if (Validate.checkUser(email, pass)) {
-			RequestDispatcher rd = request.getRequestDispatcher("DisplayTableServlet");
-			rd.forward(request,response);
+		if (ValidateEmail.checkUser(email)) {
+			if (ValidatePassword.checkUser(email, pass)) {
+				RequestDispatcher rd = request.getRequestDispatcher("DisplayTableServlet");
+				rd.forward(request,response);
+			}
+			else {
+				String message = "Incorrect password";
+				request.setAttribute("message", message);
+				RequestDispatcher rd = request.getRequestDispatcher("signIn.jsp");
+				rd.forward(request,response);
+			}
 		} else {
-			String message = "Username or Password are incorrect";
+			String message = "There's no user with that email";
 			request.setAttribute("message", message);
 			RequestDispatcher rd = request.getRequestDispatcher("signIn.jsp");
 			rd.forward(request,response);

@@ -11,14 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@WebServlet("/SignUpServlet")
 public class AddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public AddProductServlet() {
-        super();
-    }
-       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -32,11 +27,10 @@ public class AddProductServlet extends HttpServlet {
         
         if (Insert.registerProduct(id, name, description)) {
         	message = "The product was added successfully";
-            //rs.forward(request, response);
         } else {
         	message = "Something went wrong..";
         }
-        request.setAttribute("message", message);
+        request.getSession().setAttribute("message", message);
         request.getSession().setAttribute("email", email);
         RequestDispatcher view = request.getRequestDispatcher("DisplayTableServlet");
         view.forward(request, response);

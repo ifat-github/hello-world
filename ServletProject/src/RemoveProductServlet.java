@@ -26,14 +26,14 @@ public class RemoveProductServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String message = null;
         
-        if (Remove.removeProduct(id)) {
+        if (Remove.removeProduct(email, id)) {
         	message = "Product was removed successfully";
         	
         } else {
         	message = "Something went wrong..";
         }
-        request.getSession().setAttribute("message", message);
-        request.getSession().setAttribute("email", email);
+        request.setAttribute("message", message);
+        request.setAttribute("email", email);
         RequestDispatcher view = request.getRequestDispatcher("DisplayTableServlet");
         view.forward(request, response);
 	}

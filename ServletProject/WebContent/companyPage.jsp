@@ -28,7 +28,7 @@ out.println("<h1>" + name + " Products</h1>");
 
 String message = (String) request.getAttribute("message");
 if (message != null) {
-	out.println("<h1> " + message + " </h1>");
+	out.println("<h5> " + message + " </h5>");
 }
 
 %>

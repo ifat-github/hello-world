@@ -7,6 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,8 +30,12 @@ public class DisplayTableServlet extends HttpServlet {
 		String name = null;
 		String message = null;
 		int id = 0;
+		RequestDispatcher view = null;
 		
 		String email = request.getParameter("email");
+		message = (String) request.getAttribute("message");
+		//Cookie ck[] = request.getCookies();  
+	    //String email = ck[0].getValue();
 		
 		try {
 			con = DBConnection.getDBConnection();
@@ -64,7 +69,7 @@ public class DisplayTableServlet extends HttpServlet {
 			request.getSession().setAttribute("rs", rs);
 			request.setAttribute("message", message);
 			
-			RequestDispatcher view = request.getRequestDispatcher("companyPage.jsp");
+			view = request.getRequestDispatcher("companyPage.jsp");
 	        view.forward(request, response);
 
 		} catch (SQLException e) {
