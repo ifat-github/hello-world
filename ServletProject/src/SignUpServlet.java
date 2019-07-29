@@ -1,11 +1,11 @@
 
 
+
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,15 +20,19 @@ public class SignUpServlet extends HttpServlet {
         String message = null;
         RequestDispatcher rd = null;
         
-        if (Insert.registerUser(name, email, pass)) {
-            message = "You were registered successfully!";
-            request.setAttribute("message", message);
-            rd = request.getRequestDispatcher("signIn.jsp");
-        } else {
-        	message = "Something went wrong..";
-        	request.setAttribute("message", message);
-        	rd = request.getRequestDispatcher("signUp.jsp");
-        }
+        try {
+			if (Insert.registerUser(name, email, pass)) {
+			    message = "You were registered successfully!";
+			    request.setAttribute("message", message);
+			    rd = request.getRequestDispatcher("signIn.jsp");
+			} else {
+				message = "Something went wrong..";
+				request.setAttribute("message", message);
+				rd = request.getRequestDispatcher("signUp.jsp");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
         rd.forward(request,response);
 	}
 

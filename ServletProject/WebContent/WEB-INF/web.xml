@@ -19,10 +19,7 @@
     <servlet-class>TableServlet</servlet-class>
   </servlet>
   
-  <servlet>
-    <servlet-name>DisplayTableServlet</servlet-name>
-    <servlet-class>DisplayTableServlet</servlet-class>
-  </servlet>
+
   
   <servlet>
     <servlet-name>RemoveProductServlet</servlet-name>
@@ -32,6 +29,11 @@
   <servlet>
     <servlet-name>AddProductServlet</servlet-name>
     <servlet-class>AddProductServlet</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>SignOutServlet</servlet-name>
+    <servlet-class>SignOutServlet</servlet-class>
   </servlet>
   
   
@@ -50,10 +52,7 @@
     <url-pattern>/TableServlet</url-pattern>
   </servlet-mapping>
   
-  <servlet-mapping>
-    <servlet-name>DisplayTableServlet</servlet-name>
-    <url-pattern>/DisplayTableServlet</url-pattern>
-  </servlet-mapping>
+
   
   <servlet-mapping>
     <servlet-name>RemoveProductServlet</servlet-name>
@@ -63,6 +62,11 @@
    <servlet-mapping>
     <servlet-name>AddProductServlet</servlet-name>
     <url-pattern>/AddProductServlet</url-pattern>
+  </servlet-mapping>
+  
+     <servlet-mapping>
+    <servlet-name>SignOutServlet</servlet-name>
+    <url-pattern>/SignOutServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>
