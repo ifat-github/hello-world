@@ -1,5 +1,5 @@
 This is a project using:
-java HTTP Servlets, JSP, javascript, HTML, css.
+java HTTP Servlets, JSP, javascript, HTML, css, mySQL, JDBC.
 
 The project's goals is to enable companies register their products.
 
